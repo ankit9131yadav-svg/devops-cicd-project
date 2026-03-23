@@ -25,9 +25,12 @@ pipeline {
 }
 
         stage('Deploy to Kubernetes') {
-            steps {
-                sh 'kubectl apply -f k8s/'
-            }
-        }
+    steps {
+        sh '''
+        kubectl apply -f k8s/
+        kubectl rollout restart deployment cicd-app
+        '''
+    }
+}
     }
 }
