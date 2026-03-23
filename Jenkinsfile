@@ -14,15 +14,15 @@ pipeline {
         }
 
         stage('Push to DockerHub') {
-            steps {
-                withCredentials([string(credentialsId: 'docker-pass', variable: 'PASS')]) {
-                    sh '''
-                    echo $PASS | docker login -u ankit9131 --password-stdin
-                    docker push $DOCKER_IMAGE:latest
-                    '''
-                }
-            }
+    steps {
+        withCredentials([string(credentialsId: 'docker-pass', variable: 'PASS')]) {
+            sh '''
+            echo "$PASS" | docker login -u ankit9131 --password-stdin
+            docker push ankit9131/cicd-app:latest
+            '''
         }
+    }
+}
 
         stage('Deploy to Kubernetes') {
             steps {
