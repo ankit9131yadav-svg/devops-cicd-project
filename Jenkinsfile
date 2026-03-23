@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "DOCKER_USERNAME/cicd-app"
+        DOCKER_IMAGE = "ankit9131/cicd-app"
     }
 
     stages {
@@ -17,7 +17,7 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'docker-pass', variable: 'PASS')]) {
                     sh '''
-                    echo $PASS | docker login -u DOCKER_USERNAME --password-stdin
+                    echo $PASS | docker login -u ankit9131 --password-stdin
                     docker push $DOCKER_IMAGE:latest
                     '''
                 }

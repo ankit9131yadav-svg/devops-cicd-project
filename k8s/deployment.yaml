@@ -18,6 +18,7 @@ spec:
     spec:
       containers:
       - name: cicd-app
-        image: DOCKER_USERNAME/cicd-app:latest
+        image: ankit9131/cicd-app:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 3000
