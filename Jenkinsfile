@@ -8,10 +8,11 @@ pipeline {
     stages {
 
         stage('Clone Code') {
-            steps {
-                git 'https://github.com/YOUR_USERNAME/devops-cicd-project.git'
-            }
-        }
+    steps {
+        git branch: 'main',
+            url: 'https://github.com/ankit9131yadav-svg/devops-cicd-project.git'
+    }
+}
 
         stage('Build Docker Image') {
             steps {
