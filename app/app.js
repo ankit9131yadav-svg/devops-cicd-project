@@ -126,7 +126,7 @@ app.get('/', (req, res) => {
 <body>
 
     <div class="navbar">
-        <div class="logo">🚀 DevOps Store</div>
+        <div class="logo">🚀 Ankit Store</div>
         <input class="search" placeholder="Search products...">
         <div class="cart">Cart: ₹<span id="total">0</span></div>
     </div>
