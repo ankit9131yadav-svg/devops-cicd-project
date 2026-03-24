@@ -2,11 +2,13 @@ FROM node:18
 
 WORKDIR /app
 
-COPY package*.json ./
+# ✅ Copy from app folder
+COPY app/package*.json ./
+
 RUN npm install
 
-# 🔥 IMPORTANT: Copy everything (including views + public)
-COPY . .
+# ✅ Copy rest of app
+COPY app/ .
 
 EXPOSE 3000
 
