@@ -1,24 +1,95 @@
-const express = require('express');
-const path = require('path');
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f5f7fa;
+}
 
-const app = express();
+/* Navbar */
+.navbar {
+    background: #111;
+    color: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+}
 
-// Serve static files
-app.use(express.static('public'));
+.navbar a {
+    color: white;
+    margin-left: 15px;
+    text-decoration: none;
+}
 
-// Routes
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views/home.html'));
-});
+/* Hero */
+.hero {
+    height: 80vh;
+    background: linear-gradient(120deg, #667eea, #764ba2);
+    color: white;
+    text-align: center;
+    padding-top: 150px;
+}
 
-app.get('/products', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views/products.html'));
-});
+.hero h1 {
+    font-size: 50px;
+}
 
-app.get('/cart', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views/cart.html'));
-});
+.hero button {
+    padding: 12px 25px;
+    background: white;
+    border: none;
+    margin-top: 20px;
+    cursor: pointer;
+}
 
-app.listen(3000, () => {
-    console.log("Server running on http://localhost:3000");
-});
+/* Section */
+.section-title {
+    text-align: center;
+    margin: 30px;
+}
+
+/* Products */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.price {
+    color: green;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #667eea;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Cart */
+.cart-page {
+    text-align: center;
+    padding: 50px;
+}

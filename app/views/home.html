@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>DevOps Store</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 
-<div class="navbar">
-    <div>🚀 DevOps Store</div>
-    <div>
+<header class="navbar">
+    <div class="logo">🚀 DevOps Store</div>
+    <nav>
         <a href="/">Home</a>
         <a href="/products">Products</a>
-        <a href="/cart">Cart</a>
-    </div>
-</div>
+        <a href="/cart">Cart 🛒 <span id="cart-count">0</span></a>
+    </nav>
+</header>
 
-<div style="text-align:center; padding:100px; color:white;">
-    <h1>Welcome to DevOps Store</h1>
-    <p>Powered by AWS + Jenkins + Docker + Kubernetes</p>
+<section class="hero">
+    <h1>Build. Deploy. Scale.</h1>
+    <p>Your DevOps-powered e-commerce experience</p>
     <a href="/products"><button>Shop Now</button></a>
-</div>
+</section>
 
 </body>
 </html>
