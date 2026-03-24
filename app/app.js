@@ -8,26 +8,39 @@ app.get('/', (req, res) => {
 <head>
     <title>DevOps Store</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <style>
-        body {
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: 'Segoe UI', sans-serif;
-            background: #f5f7fa;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #333;
         }
 
         /* Navbar */
         .navbar {
-            background: #0d6efd;
-            color: white;
-            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            color: white;
         }
 
-        .navbar input {
-            padding: 8px;
-            border-radius: 5px;
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .search {
+            padding: 8px 12px;
+            border-radius: 20px;
             border: none;
             width: 250px;
         }
@@ -36,94 +49,102 @@ app.get('/', (req, res) => {
             font-weight: bold;
         }
 
-        /* Product Grid */
+        /* Container */
         .container {
+            padding: 40px;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 20px;
+            gap: 25px;
         }
 
+        /* Card */
         .card {
             background: white;
-            border-radius: 12px;
-            padding: 15px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             transition: 0.3s;
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px) scale(1.03);
         }
 
         .card img {
             width: 100%;
             height: 180px;
-            border-radius: 10px;
             object-fit: cover;
         }
 
+        .card-body {
+            padding: 15px;
+        }
+
         .title {
+            font-size: 18px;
             font-weight: bold;
-            margin: 10px 0;
         }
 
         .price {
-            color: green;
+            color: #28a745;
+            margin: 8px 0;
             font-size: 18px;
         }
 
         .rating {
-            color: orange;
+            color: gold;
         }
 
         button {
-            width: 100%;
             margin-top: 10px;
+            width: 100%;
             padding: 10px;
-            background: #0d6efd;
-            color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
+            background: #667eea;
+            color: white;
+            font-weight: bold;
             cursor: pointer;
+            transition: 0.3s;
         }
 
         button:hover {
-            background: #0b5ed7;
+            background: #5a67d8;
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 15px;
-            background: #222;
+            padding: 20px;
             color: white;
+            margin-top: 20px;
         }
+
     </style>
 </head>
 
 <body>
 
     <div class="navbar">
-        <div>🛒 DevOps Store</div>
-        <input type="text" placeholder="Search products...">
+        <div class="logo">🚀 DevOps Store</div>
+        <input class="search" placeholder="Search products...">
         <div class="cart">Cart: ₹<span id="total">0</span></div>
     </div>
 
     <div class="container" id="products"></div>
 
     <footer>
-        🚀 Powered by DevOps CI/CD Pipeline | AWS + Jenkins + Kubernetes
+        Built with ❤️ using AWS | Jenkins | Docker | Kubernetes
     </footer>
 
 <script>
     const products = [
-        {name: "Laptop", price: 55000, img: "https://picsum.photos/300/200?1"},
-        {name: "Smartphone", price: 25000, img: "https://picsum.photos/300/200?2"},
-        {name: "Headphones", price: 3000, img: "https://picsum.photos/300/200?3"},
-        {name: "Smart Watch", price: 7000, img: "https://picsum.photos/300/200?4"},
-        {name: "Camera", price: 40000, img: "https://picsum.photos/300/200?5"},
-        {name: "Gaming Mouse", price: 1500, img: "https://picsum.photos/300/200?6"}
+        {name: "Laptop", price: 55000, img: "https://picsum.photos/400/300?1"},
+        {name: "Smartphone", price: 25000, img: "https://picsum.photos/400/300?2"},
+        {name: "Headphones", price: 3000, img: "https://picsum.photos/400/300?3"},
+        {name: "Smart Watch", price: 7000, img: "https://picsum.photos/400/300?4"},
+        {name: "Camera", price: 40000, img: "https://picsum.photos/400/300?5"},
+        {name: "Gaming Mouse", price: 1500, img: "https://picsum.photos/400/300?6"}
     ];
 
     let total = 0;
@@ -139,10 +160,12 @@ app.get('/', (req, res) => {
         container.innerHTML += \`
             <div class="card">
                 <img src="\${p.img}">
-                <div class="title">\${p.name}</div>
-                <div class="price">₹\${p.price}</div>
-                <div class="rating">⭐⭐⭐⭐☆</div>
-                <button onclick="addToCart(\${p.price})">Add to Cart</button>
+                <div class="card-body">
+                    <div class="title">\${p.name}</div>
+                    <div class="price">₹\${p.price}</div>
+                    <div class="rating">⭐⭐⭐⭐☆</div>
+                    <button onclick="addToCart(\${p.price})">Add to Cart</button>
+                </div>
             </div>
         \`;
     });
